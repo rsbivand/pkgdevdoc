@@ -1,0 +1,106 @@
+﻿Package Development
+
+R ships with a lot of functionality, distributed via base and
+recommended packages. Other functionality is provided by external
+packages, following the Writing R Extensions (WRE) manual.  The WRE
+defines what is accepted by standard R methods and it is the defining
+manual of package development.  Many useful tools and R packages
+themselves have been created to ease or improve package development.
+This Task View focuses on these R packages.
+
+
+Packages used for formatting or making packages more
+“user-friendly” might also appear in other Tasks Views. A lot of
+functionality within this Task View is present in the tools package
+or other base packages, in these cases it is mentioned at the top of
+the section.
+
+
+Package developers must be aware that their packages should be
+maintained (as long as reasonably possible) if distributed in repositories
+like CRAN or Bioconductor (Despite what the licences usually claim that
+the software is provided AS IS).  The maintenance work required might be
+due to changes in the computational environment, like in a dependency,
+in the repository policies or in R.
+
+
+Maintaining a package is not just creating it and releasing it in
+a repository a single time.  It requires continued effort from the
+maintainer.  Packages listed here automate some processes, or establish
+a process to be used but they themselves might be(come) stale, be updated
+or archived.
+
+In this situation, users might need to update their package.  It might
+require using fewer tools, updating the tools used or reuse any process
+established to comply with the R extension manual and repositories
+policies (if the package is shared in a repository).
+
+
+Packages included here are neither meant to endorse the "best" packages
+for a given task, nor are they listed because they comply with current
+or past CRAN policy. Some packages are related to repositories.
+
+
+If you think that some package is missing from the Task View, please
+file an issue in the GitHub repository or contact the maintainer(s).
+
+Package creation
+
+These packages provide some functionality to create the structure
+needed for a package: The DESCRIPTION file, the NAMESPACE, licence, R
+code and documentation. A template is provided by tools::package.skeleton.
+
+Checking and building packages
+
+Building a package is done via R CMD build which can be later checked
+with R CMD check.  Repositories and maintainers determine what is
+considered a failure. For example: CRAN uses non-default environmental
+variables and procedures to enforce behaviour in the packages.  Before
+distributing a package, the maintainer should make efforts to reach the
+desired levels of quality (be those self-imposed or validated externally:
+the repository, a third entity, the institution where it is developed…).
+
+Due to the amount of work it requires to review the high quality
+standards of packages in repositories, they can be archived without
+warning. It is the responsibility of the maintainer to be aware of
+possible problems.  tools::testInstalledPackage to check installed
+packages.
+
+Writing package documentation
+
+Packages must be documented via R’s format: R documentation. 
+Functions, objects and other elements can have a help page. 
+In addition there are vignettes to show more complex uses of
+a package.
+
+These packages provide some functionality to annotate and document
+a package like transforming from one format to the R documentation
+format.  R provides functions such as tools::Sweave.  A special mention
+for tools::prompt which provides a template for writing a function and
+tools::promptData which provides a template for an object.
+
+Package namespaces
+
+Packages must have a namespace, which controls what is imported and
+exported from the package.  Some tools that help with the documentation
+help also handling the namespaces, others are more focused on dependencies
+tradeoffs. tools::package_depencencies and tools::check_packages_in_dir
+
+Internationalisation
+
+Packages might be addressed to people using a different language and
+locales.  These packages help with the process, so package maintainers
+can write for them.  tools::checkPoFile to check translations and
+tools::aspell to check typos
+
+Tidying and profiling R code
+
+Package source code is often looked upon by users to understand the
+functionality and how it is done.  At the same time maintainers often find
+that it is easier to maintain a package with more readable code.  These
+packages provide some rules and helpful functionality.
+
+Maintainers might be interested in optimising the code, so that users
+spend less time waiting for it to finish. The following packages provide
+functions to measure, compare and optimise code.  To compare the time
+required to execute some code R provides utils::Rprof.
